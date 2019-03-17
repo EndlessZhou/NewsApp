@@ -13,6 +13,7 @@ LOGIN_FAIL = "登录失败"
 FILE_FORMAT_ERROR = "图片文件格式错误"
 USER_NOT_EXIST = "不存在该用户"
 FILE_NOT_EXIST = "不存在头像文件"
+PHONE_NUMBER_EXIST = "该手机号码已注册"
 
 
 def register(request):
@@ -21,6 +22,9 @@ def register(request):
     user_info.user_name = body.get("user_name")
     user_info.password = body.get("password")
     user_info.phone_number = body.get("phone_number")
+    exist = UserInfo.objects.filter(phone_number=user_info.phone_number)
+    if len(exist) != 0:
+        return util.exception_response(PHONE_NUMBER_EXIST)
     try:
         user_info.save()
     except ValueError or KeyError:
