@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
+    'dynamic',
 ]
 
 MIDDLEWARE = [
@@ -87,16 +88,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-AVATAR_PATH = os.path.join(BASE_DIR, 'static', 'avatar')
+FILE_ROOT = 'static'
+AVATAR_PATH = os.path.join(BASE_DIR, FILE_ROOT, 'avatar')
+PHOTO_PATH = os.path.join(BASE_DIR, FILE_ROOT, 'photo')

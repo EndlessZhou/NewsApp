@@ -66,8 +66,7 @@ def upload_avatar(request):
 
 
 def get_avatar(request):
-    body = json.loads(request.body)
-    phone_number = body.get("phone_number")
+    phone_number = request.GET['phone_number']
     try:
         user_info = UserInfo.objects.get(phone_number=phone_number)
     except UserInfo.DoesNotExist:
